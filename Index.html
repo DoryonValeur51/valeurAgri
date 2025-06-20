@@ -11,21 +11,26 @@
 </head>
 <body>
 <header> 
+  <div class="logo-group">
     <a href="#" class="logo">
-    <img src="images/Valeur logo1.png" alt="Logo de la ferme" style="height:48px;">
-</a>
+      <img src="images/Valeur logo1.png" alt="Logo de la ferme" style="height:48px;">
+    </a>
     <a href="#" class="logo"><span>V</span>aleur</a>
-    <ul class="navbar">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#services">Nos Services</a></li>
-        <li><a href="#produit">Produit</a></li>
-        <li><a href="#experts">Nos Expert</a></li>
-        <li><a href="#temoignages">Temoignage</a></li>
-        <li><a href="#business">Busness plan / Pojet</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <a href="#" class="btn-reservation"> Reservation</a>
-
-    </ul>
+  </div>
+  <ul class="navbar">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#services">Nos Services</a></li>
+    <li><a href="#produit">Produit</a></li>
+    <li><a href="#experts">Nos Expert</a></li>
+    <li><a href="#temoignages">Temoignage</a></li>
+    <li><a href="#business">Busness plan / Pojet</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <a href="#" class="btn-reservation"> Reservation</a>
+  </ul>
+  <button class="burger" id="burger-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="menu-overlay" id="menu-overlay"></div>
 </header>
 <main>
     <section id="accueil" class="hero">
@@ -51,7 +56,6 @@
             <p>Innovations pour une agriculture plus efficace et durable.</p>
         </div>
     </section>
-
 <section id="experts" class="experts">
     <h2>Nos Experts</h2>
     <div class="experts-list">
@@ -59,7 +63,7 @@
             <img src="images/DOT Valeur PDG.jpg" alt="Mr. Doryon Valeur AKO-ITOUA" class="expert-photo">
             <h3>Mr. Doryon Valeur AKO-ITOUA</h3>
             <p class="expert-poste"> Investisseur</p>
-            <p class="expert-role">Ingénieur Agronome</p>
+            <p class="expert-role">Ingénieur environnemental</p>
             <p class="expert-desc">Spécialiste en agroécologie, il accompagne les agriculteurs dans la transition 
                 vers des pratiques durables et innovantes.</p>
         </div>
@@ -82,7 +86,7 @@
     </div>
 </section>
 
-    <section id="produit" class="produit-carousel-section">
+<section id="produit" class="produit-carousel-section">
         <h2>Nos Produits</h2>
         <div class="produit-carousel">
             <div class="produit-track">
@@ -198,7 +202,7 @@
             Nous accompagnons les agriculteurs, les porteurs de projets et les coopératives dans l'amélioration de leurs pratiques, 
             la valorisation de leurs productions et la réussite de leurs projets agricoles.<br><br>
             Nos activités couvrent la consultation agronomique, la formation, la recherche et développement, la production maraîchère et d’élevage,
-             ainsi que l’élaboration de business plans adaptés au secteur agricole. 
+            ainsi que l’élaboration de business plans adaptés au secteur agricole. 
             Notre équipe d’experts met son savoir-faire au service de la réussite de vos ambitions agricoles.
         </p>
     </div>
@@ -305,6 +309,30 @@
         <img src="images/you.png" alt="YouTube" class="social-icon">
     </a>
 </div>
-</body>
+<script>
+const burgerBtn = document.getElementById('burger-btn');
+const navbar = document.querySelector('.navbar');
+const overlay = document.getElementById('menu-overlay');
 
+// Ouvre/ferme le menu au clic sur le burger
+burgerBtn.addEventListener('click', () => {
+  navbar.classList.toggle('open');
+  overlay.classList.toggle('active');
+});
+
+// Ferme le menu si on clique sur l'overlay
+overlay.addEventListener('click', () => {
+  navbar.classList.remove('open');
+  overlay.classList.remove('active');
+});
+
+// Ferme le menu si on clique sur un lien du menu
+navbar.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+});
+</script>
+</body>
 </html>
